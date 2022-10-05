@@ -1,16 +1,19 @@
-name: "Terraform"
 on:
   push:
     branches:
       - master
   pull_request:
-defaults:
-  run:
-    working-directory: ./linode
 jobs:
   terraform:
     name: "Terraform"
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      matrix: { env: [ "linode", "cloudflare" ] }
+    environment: ${{ matrix.env }}
+    defaults:
+      run:
+        working-directory: "./workspace/${{ matrix.env }}"
     steps:
       - name: Checkout
         uses: actions/checkout@v3
