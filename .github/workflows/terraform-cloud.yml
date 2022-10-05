@@ -2,9 +2,11 @@ name: "Terraform"
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
-
+defaults:
+  run:
+    working-directory: ./linode
 jobs:
   terraform:
     name: "Terraform"
@@ -45,7 +47,7 @@ jobs:
             #### Terraform Validation 🤖\`${{ steps.validate.outcome }}\`
             #### Terraform Plan 📖\`${{ steps.plan.outcome }}\`
 
-            <details><summary>Show Plan</summary>
+            <details><summary>Show Plan</summary
 
             \`\`\`\n
             ${process.env.PLAN}
