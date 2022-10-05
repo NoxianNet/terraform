@@ -13,7 +13,7 @@ jobs:
     environment: ${{ matrix.env }}
     defaults:
       run:
-        working-directory: "./workspace/${{ matrix.env }}"
+        working-directory: "./{{ matrix.env }}"
     steps:
       - name: Checkout
         uses: actions/checkout@v3
