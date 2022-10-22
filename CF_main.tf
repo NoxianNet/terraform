@@ -12,5 +12,5 @@ resource "cloudflare_record" "docker-instance-subdomains" {
   type     = "A"
   zone_id  = cloudflare_zone.signalproxy_net.id
   ttl      = 60
-  proxied  = true
+  value    = linode_instance.reverse_proxy_docker.ip_address
 }
