@@ -8,12 +8,6 @@ jobs:
     name: "Terraform"
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    strategy:
-      matrix: { env: [ "linode", "cloudflare" ] }
-    environment: ${{ matrix.env }}
-    defaults:
-      run:
-        working-directory: "./${{ matrix.env }}"
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -50,7 +44,7 @@ jobs:
             #### Terraform Validation 🤖\`${{ steps.validate.outcome }}\`
             #### Terraform Plan 📖\`${{ steps.plan.outcome }}\`
 
-            <details><summary>Show Plan</summary
+            <details><summary>Show Plan</summary>
 
             \`\`\`\n
             ${process.env.PLAN}
