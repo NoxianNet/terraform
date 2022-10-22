@@ -1,5 +1,5 @@
 resource "cloudflare_zone" "signalproxy_net" {
-  zone = "proxysignal.net"
+  zone = "signalproxy.net"
   plan = "free"
 }
 
