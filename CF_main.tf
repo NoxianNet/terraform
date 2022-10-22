@@ -6,22 +6,11 @@ resource "cloudflare_zone" "signalproxy_net" {
   }
 }
 
-resource "cloudflare_record" "docker" {
-  name       = "docker"
-  type       = "A"
-  zone_id    = cloudflare_zone.signalproxy_net.id
-  value      = linode_instance.reverse_proxy_docker.ip_address
-  ttl        = 60
-  depends_on = [
-	linode_instance.reverse_proxy_docker
-  ]
-}
-
-
 resource "cloudflare_record" "docker-instance-subdomains" {
   for_each = var.docker-instance-subdomains
   name     = each.value
   type     = "A"
   zone_id  = cloudflare_zone.signalproxy_net.id
   ttl      = 60
+  proxied  = true
 }

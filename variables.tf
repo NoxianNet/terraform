@@ -22,6 +22,6 @@ variable "docker-instance-subdomains" {
   default = [
 	"code", "code-server", "vscode",
 	"nginx", "portainer", "test",
-	"ssh"
+	"ssh", "docker"
   ]
 }
