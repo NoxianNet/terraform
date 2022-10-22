@@ -1,6 +1,9 @@
 resource "cloudflare_zone" "signalproxy_net" {
   zone = "signalproxy.net"
   plan = "free"
+  lifecycle {
+	prevent_destroy = true
+  }
 }
 
 resource "cloudflare_record" "test-domain" {
