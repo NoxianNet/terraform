@@ -1,10 +1,10 @@
-resource "linode_domain" "signalproxy_master" {
-  type      = "master"
-  domain    = "signalproxy.net"
-  soa_email = "linode1@noxian.net"
-  tags      = [ "main" ]
-}
-
+#resource "linode_domain" "signalproxy_master" {
+#  type      = "master"
+#  domain    = "signalproxy.net"
+#  soa_email = "linode1@noxian.net"
+#  tags      = ["main"]
+#}
+#
 #locals {
 #  reverse_proxy_ip = linode_instance.reverse_proxy_docker.ip_address
 #}
