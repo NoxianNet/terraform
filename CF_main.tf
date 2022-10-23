@@ -16,7 +16,7 @@ resource "cloudflare_record" "docker-instance-subdomains" {
 }
 
 resource "cloudflare_record" "main_domain" {
-  name    = "signalproxy.net"
+  name    = "@"
   type    = "A"
   zone_id = cloudflare_zone.signalproxy_net.id
   value   = linode_instance.reverse_proxy_docker.ip_address
