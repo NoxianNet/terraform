@@ -23,6 +23,7 @@ variable "docker-instance-subdomains" {
 	"code", "code-server", "vscode",
 	"nginx", "portainer", "test",
 	"ssh", "docker", "grafana",
-	"graylog", "influx"
+	"graylog", "influx", "admin",
+	"proxy-manager"
   ]
 }
