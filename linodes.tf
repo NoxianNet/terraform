@@ -4,5 +4,5 @@ resource "linode_instance" "reverse_proxy_docker" {
   tags            = [ "docker", "nginx", "reverse-proxy" ]
   type            = "g6-standard-2"
   authorized_keys = [ var.ssh_key ]
-  image           = "linode/ubuntu22.04"
+  image           = var.linode_ubuntu_image
 }
