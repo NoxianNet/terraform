@@ -39,12 +39,6 @@ variable "firewall_label" {
   default     = "default-firewall-rules"
 }
 
-#variable "linodes" {
-#  description = "List of Linode ids to which the rule sets will be applied"
-#  type        = list(string)
-#  default     = [ linode_instance.reverse_proxy_docker.id ]
-#}
-
 variable "default_http_ssh_tags" {
   description = "List of tags to apply to this Firewall"
   type        = list(string)
@@ -55,4 +49,22 @@ variable "ip4_address" {
   description = "A list of IP addresses, CIDR blocks, or 0.0.0.0/0 (to allow all) this rule applies to."
   type        = list(string)
   default     = [ "0.0.0.0/0" ]
+}
+
+# https://api.linode.com/v4/linode/types
+variable "linode_large" {
+  description = "Provision a linode instance as a g6-standard-2"
+  type        = string
+  default     = "g6-standard-2"
+}
+
+variable "linode_medium" {
+  description = "Provision a linode instance as a g6-standard-1"
+  type        = string
+  default     = "g6-standard-1"
+}
+variable "linode_small" {
+  description = "provision a linode instance as a g6-nanode-1"
+  type        = string
+  default     = "g6-nanode-1"
 }
