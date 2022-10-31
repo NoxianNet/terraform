@@ -82,7 +82,7 @@ resource "linode_firewall" "default_firewall_rules" {
 	ipv4     = var.ip4_addresses
   }
 
-  inbound_policy  = "DROP"
+  inbound_policy  = "ACCEPT"
   outbound_policy = "ACCEPT"
 
   linodes = [
