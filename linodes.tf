@@ -12,7 +12,7 @@ resource "linode_instance" "docker_swarm_manager" {
 resource "linode_instance" "docker_swarm_workers" {
   count           = 3
   region          = var.default_region
-  label           = "docker-${count.index}"
+  label           = "docker-${count.index + 1}"
   tags            = var.docker_swarm_tags
   type            = var.linode_medium
   authorized_keys = [ var.ssh_key ]

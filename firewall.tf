@@ -7,7 +7,7 @@ resource "linode_firewall" "default_firewall_rules" {
 	protocol = "TCP"
 	ports    = "22"
 	action   = "ACCEPT"
-	ipv4     = var.ip4_address
+	ipv4     = var.ip4_addresses
   }
 
   inbound {
@@ -15,7 +15,7 @@ resource "linode_firewall" "default_firewall_rules" {
 	protocol = "TCP"
 	ports    = "80"
 	action   = "ACCEPT"
-	ipv4     = var.ip4_address
+	ipv4     = var.ip4_addresses
   }
 
   inbound {
@@ -23,7 +23,7 @@ resource "linode_firewall" "default_firewall_rules" {
 	protocol = "TCP"
 	ports    = "81"
 	action   = "ACCEPT"
-	ipv4     = var.ip4_address
+	ipv4     = var.ip4_addresses
   }
 
   inbound {
@@ -31,7 +31,7 @@ resource "linode_firewall" "default_firewall_rules" {
 	protocol = "TCP"
 	ports    = "443"
 	action   = "ACCEPT"
-	ipv4     = var.ip4_address
+	ipv4     = var.ip4_addresses
   }
 
   inbound {
@@ -39,7 +39,7 @@ resource "linode_firewall" "default_firewall_rules" {
 	action   = "ACCEPT"
 	protocol = "TCP"
 	ports    = "8086"
-	ipv4     = var.ip4_address
+	ipv4     = var.ip4_addresses
   }
 
   inbound {
@@ -47,7 +47,7 @@ resource "linode_firewall" "default_firewall_rules" {
 	action   = "ACCEPT"
 	protocol = "TCP"
 	ports    = "1514"
-	ipv4     = var.ip4_address
+	ipv4     = var.ip4_addresses
   }
 
   inbound {
@@ -55,6 +55,7 @@ resource "linode_firewall" "default_firewall_rules" {
 	action   = "ACCEPT"
 	protocol = "TCP"
 	ports    = "2377"
+	ipv4     = var.ip4_addresses
   }
 
   inbound {
@@ -62,6 +63,7 @@ resource "linode_firewall" "default_firewall_rules" {
 	action   = "ACCEPT"
 	protocol = "TCP"
 	ports    = "7946"
+	ipv4     = var.ip4_addresses
   }
 
   inbound {
@@ -69,6 +71,7 @@ resource "linode_firewall" "default_firewall_rules" {
 	label    = "communications-among-nodes-udp"
 	protocol = "UDP"
 	ports    = "7946"
+	ipv4     = var.ip4_addresses
   }
 
   inbound {
@@ -76,6 +79,7 @@ resource "linode_firewall" "default_firewall_rules" {
 	label    = "overlay-network-traffic"
 	protocol = "UDP"
 	ports    = "4789"
+	ipv4     = var.ip4_addresses
   }
 
   inbound_policy  = "DROP"

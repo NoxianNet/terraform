@@ -39,7 +39,7 @@ variable "default_http_ssh_tags" {
   default     = [ "accept-http", "accept-https", "port-81", "ssh" ]
 }
 
-variable "ip4_address" {
+variable "ip4_addresses" {
   description = "A list of IP addresses, CIDR blocks, or 0.0.0.0/0 (to allow all) this rule applies to."
   type        = list(string)
   default     = [ "0.0.0.0/0" ]
