@@ -21,3 +21,12 @@ resource "cloudflare_record" "docker_swarm" {
   ttl        = 60
   depends_on = [ linode_instance.docker_swarm_workers ]
 }
+
+resource "cloudflare_record" "docker_swarm-manager" {
+  name       = "docker"
+  type       = "A"
+  zone_id    = cloudflare_zone.signalproxy_net.id
+  value      = linode_instance.docker_swarm_manager.ip_address
+  ttl        = 60
+  depends_on = [ linode_instance.docker_swarm_manager ]
+}
