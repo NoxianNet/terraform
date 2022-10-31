@@ -9,6 +9,6 @@ apt-get update
 apt-get upgrade -y
 apt-get dist-upgrade -y
 EOF
-  images      = [ var.linode_ubuntu_image ]
+  images      = [ var.linode_ubuntu_22-04 ]
   rev_note    = "initial version"
 }

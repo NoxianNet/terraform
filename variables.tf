@@ -17,18 +17,12 @@ variable "CF_API_KEY" {
   sensitive = true
 }
 
-variable "docker-instance-subdomains" {
-  type    = set(string)
-  default = [
-	"code", "code-server", "vscode",
-	"nginx", "portainer", "test",
-	"ssh", "docker", "grafana",
-	"graylog", "influx", "admin",
-	"proxy-manager"
-  ]
+variable "ROOT_PASSWORD" {
+  type      = string
+  sensitive = true
 }
 
-variable "linode_ubuntu_image" {
+variable "linode_ubuntu_22-04" {
   type    = string
   default = "linode/ubuntu22.04"
 }
@@ -68,3 +62,27 @@ variable "linode_small" {
   type        = string
   default     = "g6-nanode-1"
 }
+
+variable "docker_swarm_tags" {
+  description = "default tags to assign to docker swarm"
+  type        = list(string)
+  default     = [ "docker", "docker-swarm" ]
+}
+
+variable "docker_swarm_manager_tag" {
+  description = "default tags to assign to docker swarm manager"
+  type        = list(string)
+  default     = [ "docker-swarm-manager", "manager" ]
+}
+
+
+#variable "docker-instance-subdomains" {
+#  type    = set(string)
+#  default = [
+#	"code", "code-server", "vscode",
+#	"nginx", "portainer", "test",
+#	"ssh", "docker", "grafana",
+#	"graylog", "influx", "admin",
+#	"proxy-manager"
+#  ]
+#}

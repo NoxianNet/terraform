@@ -1,19 +1,22 @@
-resource "linode_instance" "reverse_proxy_docker" {
+resource "linode_instance" "docker_swarm_manager" {
   region          = var.default_region
-  label           = "nginx-docker"
-  tags            = [ "docker", "nginx", "reverse-proxy" ]
-  type            = var.linode_large
+  label           = "docker-swarm-manager"
+  tags            = concat(var.docker_swarm_tags, var.docker_swarm_manager_tag)
+  type            = var.linode_medium
   authorized_keys = [ var.ssh_key ]
-  image           = var.linode_ubuntu_image
+  image           = var.linode_ubuntu_22-04
+  root_pass       = var.ROOT_PASSWORD
+  stackscript_id  = linode_stackscript.install_docker.id
 }
 
-resource "linode_instance" "stackscript_test" {
+resource "linode_instance" "docker_swarm_workers" {
+  count           = 3
   region          = var.default_region
-  label           = "test-stackscript"
-  tags            = [ "test", "stackscript" ]
-  type            = var.linode_small
+  label           = "docker-${count.index}"
+  tags            = var.docker_swarm_tags
+  type            = var.linode_medium
   authorized_keys = [ var.ssh_key ]
-  image           = var.linode_ubuntu_image
-
-  stackscript_id = linode_stackscript.install_docker.id
+  image           = var.linode_ubuntu_22-04
+  root_pass       = var.ROOT_PASSWORD
+  stackscript_id  = linode_stackscript.install_docker.id
 }

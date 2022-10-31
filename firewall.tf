@@ -34,8 +34,59 @@ resource "linode_firewall" "default_firewall_rules" {
 	ipv4     = var.ip4_address
   }
 
+  inbound {
+	label    = "allow-influx-db"
+	action   = "ACCEPT"
+	protocol = "TCP"
+	ports    = "8086"
+	ipv4     = var.ip4_address
+  }
+
+  inbound {
+	label    = "allow-graylog"
+	action   = "ACCEPT"
+	protocol = "TCP"
+	ports    = "1514"
+	ipv4     = var.ip4_address
+  }
+
+  inbound {
+	label    = "cluster-communications"
+	action   = "ACCEPT"
+	protocol = "TCP"
+	ports    = "2377"
+  }
+
+  inbound {
+	label    = "communications-among-nodes-tcp"
+	action   = "ACCEPT"
+	protocol = "TCP"
+	ports    = "7946"
+  }
+
+  inbound {
+	action   = "ACCEPT"
+	label    = "communications-among-nodes-udp"
+	protocol = "UDP"
+	ports    = "7946"
+  }
+
+  inbound {
+	action   = "ACCEPT"
+	label    = "overlay-network-traffic"
+	protocol = "UDP"
+	ports    = "4789"
+  }
+
   inbound_policy  = "DROP"
   outbound_policy = "ACCEPT"
 
-  linodes = [ linode_instance.reverse_proxy_docker.id ]
+  linodes = [
+	linode_instance.docker_swarm_manager.id,
+	linode_instance.docker_swarm_workers[ 0 ].id,
+	linode_instance.docker_swarm_workers[ 1 ].id,
+	linode_instance.docker_swarm_workers[ 2 ].id
+  ]
+
+  depends_on = [ linode_instance.docker_swarm_manager, linode_instance.docker_swarm_workers ]
 }
