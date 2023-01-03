@@ -36,29 +36,35 @@ variable "firewall_label" {
 variable "default_http_ssh_tags" {
   description = "List of tags to apply to this Firewall"
   type        = list(string)
-  default     = [ "accept-http", "accept-https", "port-81", "ssh" ]
+  default     = ["accept-http", "accept-https", "port-81", "ssh"]
 }
 
 variable "ip4_addresses" {
   description = "A list of IP addresses, CIDR blocks, or 0.0.0.0/0 (to allow all) this rule applies to."
   type        = list(string)
-  default     = [ "0.0.0.0/0" ]
+  default     = ["0.0.0.0/0"]
 }
 
 # https://api.linode.com/v4/linode/types
+variable "linode_sLarge" {
+  description = "Linode 8GB"
+  type        = string
+  default     = "g6-standard-4"
+}
+
 variable "linode_large" {
-  description = "Provision a linode instance as a g6-standard-2"
+  description = "Linode 4GB"
   type        = string
   default     = "g6-standard-2"
 }
 
 variable "linode_medium" {
-  description = "Provision a linode instance as a g6-standard-1"
+  description = "Linode 2GB"
   type        = string
   default     = "g6-standard-1"
 }
 variable "linode_small" {
-  description = "provision a linode instance as a g6-nanode-1"
+  description = "Nanode 1GB"
   type        = string
   default     = "g6-nanode-1"
 }
@@ -66,13 +72,13 @@ variable "linode_small" {
 variable "docker_swarm_tags" {
   description = "default tags to assign to docker swarm"
   type        = list(string)
-  default     = [ "docker", "docker-swarm" ]
+  default     = ["docker", "docker-swarm"]
 }
 
 variable "docker_swarm_manager_tag" {
   description = "default tags to assign to docker swarm manager"
   type        = list(string)
-  default     = [ "docker-swarm-manager", "manager" ]
+  default     = ["docker-swarm-manager", "manager"]
 }
 
 
